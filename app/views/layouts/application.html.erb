@@ -14,7 +14,7 @@
         <a href="/">Home</a>
         <% if logged_in? %>
         <a href="/logout">Logout</a>
-        <a href="/users/<%=current_user.id%>"><%= current_user.username %></a>
+        <a href="/users/<%=current_user.id%>"><%= current_user.full_name %></a>
         <% else %>
         <a href= '/login'> Log In </a>
         <a href= '/users/new'> Register </a>
