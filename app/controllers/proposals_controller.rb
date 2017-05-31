@@ -1,4 +1,8 @@
 class ProposalsController < ApplicationController
+   def index
+    @proposals = Proposal.all
+  end
+  
   def show
     @user = User.find(params[:user_id])
     @proposal = Proposal.find(params[:id])
@@ -34,4 +38,5 @@ class ProposalsController < ApplicationController
   def proposal_params
     params.require(:proposal).permit(:summary, :hypothesis, :status)
   end
+
 end

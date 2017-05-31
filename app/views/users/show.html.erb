@@ -1,0 +1,22 @@
+<h1> Welcome <%= @user.full_name %> <h1>
+<p>Lab position: <%= @user.access %></p>
+
+<%  if @user.access == "faculty" %>
+<div>
+  <h3> Proposals : <h3>
+    <ul>
+      <% @user.proposals.each do |prop| %>
+        <li><%= link_to prop.summary, user_proposal_path(@user,prop) %></li><br>
+        <span> <%= link_to 'Edit', edit_user_proposal_path(@user,prop) %></span>
+        <span><%= link_to 'Delete', user_proposal_path(@user,prop), method: :delete, data: { confirm: 'Are You Sure?'} %> </span>
+      <% end %>
+      <ul>
+</div>
+<% else %>
+  <h3> Experiments : <h3>
+    <ul>
+      <% @user.experiments.each do |ex| %>
+      <li><%= link_to ex.title, user_proposal_experiment_path(ex.experimenter, ex.proposal, ex) %></li><br>
+    </ul>
+      <% end %>
+<% end %>
