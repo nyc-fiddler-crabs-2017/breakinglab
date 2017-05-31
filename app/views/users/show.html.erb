@@ -1,0 +1,10 @@
+<h1> Welcome <%= @user.full_name %> <h1>
+<p>Lab position: <%= @user.access %></p>
+<div>
+  <h3> Proposals : <h3>
+    <ul>
+      <% @user.proposals.each do |prop| %>
+        <li><%= link_to prop.summary, user_proposal_path(@user,prop) %></li>
+      <% end %>
+      <ul>
+</div>
