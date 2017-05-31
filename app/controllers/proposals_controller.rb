@@ -27,7 +27,7 @@ class ProposalsController < ApplicationController
     @proposal = Proposal.find(params[:id])
     @proposal.destroy
 
-    redirect_to root
+    redirect_to @proposal.proposer
   end
 
   private
