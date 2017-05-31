@@ -1,0 +1,11 @@
+<h3> Proposals </h3>
+
+<% if @proposals %>
+  <% @proposals.each do |proposal| %>
+  <ul>
+    <li><%= link_to proposal.summary, user_proposal_path(proposal.proposer, proposal) %></li>
+  </ul>
+  <% end %>
+<% else %>
+  <h3> There are currently no proposals available! <h3>
+<% end %>

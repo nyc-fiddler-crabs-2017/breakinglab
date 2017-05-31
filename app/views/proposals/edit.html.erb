@@ -1,0 +1,21 @@
+<h2>Update Your Proposal</h2>
+<div class="form-wrapper">
+  <%= form_for [@proposal.proposer, @proposal] do |f| %>
+    <div class="form-sections">
+      <%= f.label :summary %>
+      <%= f.text_field :summary %>
+    </div>
+    <div class="form-sections">
+      <%= f.label :hypothesis %>
+      <%= f.text_field :hypothesis %>
+    </div>
+    <div class="form-sections">
+      <%= f.label :status %>
+      <%= f.select :status, ['Open', 'In Progress', 'Closed', 'Archived'] %>
+    </div>
+    <div class="form-sections">
+      <%= f.submit "Update Proposal" %>
+    </div>
+  <% end %>
+</div>
+<%= link_to 'Back', user_proposal_path(@proposal.proposer, @proposal) %>
