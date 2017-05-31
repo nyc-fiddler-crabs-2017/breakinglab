@@ -7,17 +7,19 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 5.times {
-  User.create(
+  faculty = User.create(
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
   email: Faker::Internet.email,
   password: 'password',
   access: 'faculty'
  )
+
+  faculty.proposals.create(summary: "summary", hypothesis: "hypo")
 }
 
 10.times {
-  User.create(
+  lab_tech = User.create(
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
   email: Faker::Internet.email,
