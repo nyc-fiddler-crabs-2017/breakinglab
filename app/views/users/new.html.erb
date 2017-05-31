@@ -1,0 +1,15 @@
+<h1>Users#new</h1>
+  <% if @errors %>
+    <%= @errors %>
+  <% end %>
+
+
+    <%= form_for :user, url: '/users' do |f| %>
+
+      first name: <%= f.text_field :first_name %>
+      last name: <%= f.text_field :last_name %>
+      Email: <%= f.text_field :email %>
+      Password: <%= f.password_field :password %>
+      Password Confirmation: <%= f.password_field :password_confirmation %>
+      <%= f.submit "Submit" %>
+  <% end %>

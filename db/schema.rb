@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20170531162149) do
     t.string "last_name", null: false
     t.string "email", null: false
     t.string "password_digest", null: false
-    t.string "access", null: false
+    t.string "access", default: "labtech"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
