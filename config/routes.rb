@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resource :users do
     resources :proposals do
       resources :comments do
-      end 
+      end
         resources :experiments do
           resources :observations do
             resources :comments do
@@ -22,4 +22,7 @@ Rails.application.routes.draw do
             end
     end
   end
+
+  root 'proposals#index'
+
 end
