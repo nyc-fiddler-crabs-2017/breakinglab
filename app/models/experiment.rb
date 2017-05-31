@@ -1,6 +1,7 @@
 class Experiment < ApplicationRecord
   belongs_to :experimenter, {:class_name => "User"}
-  has_one :procedure
-  has_many :comments
-  has_many :observations
+  belongs_to :proposal
+  has_many :procedures
+  has_many :comments , as: :commentable
+  has_many :observations, as: :observable
 end

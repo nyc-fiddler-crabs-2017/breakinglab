@@ -4,7 +4,6 @@ class CreateProposals < ActiveRecord::Migration[5.1]
       t.string :summary, null: false
       t.string :hypothesis, null: false
       t.references :proposer, null: false
-
       t.timestamps(null: false)
     end
   end

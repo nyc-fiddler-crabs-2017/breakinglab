@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170531143756) do
+ActiveRecord::Schema.define(version: 20170531162149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,14 +26,15 @@ ActiveRecord::Schema.define(version: 20170531143756) do
   end
 
   create_table "experiments", force: :cascade do |t|
+    t.string "title", null: false
     t.string "status", null: false
-    t.bigint "experimenter_id", null: false
+    t.string "results"
+    t.string "conclusions"
+    t.bigint "experimenter_id"
     t.bigint "proposal_id", null: false
-    t.bigint "procedure_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["experimenter_id"], name: "index_experiments_on_experimenter_id"
-    t.index ["procedure_id"], name: "index_experiments_on_procedure_id"
     t.index ["proposal_id"], name: "index_experiments_on_proposal_id"
   end
 
@@ -48,9 +49,8 @@ ActiveRecord::Schema.define(version: 20170531143756) do
   end
 
   create_table "procedures", force: :cascade do |t|
-    t.string "results", null: false
-    t.string "conclusions", null: false
-    t.bigint "experiment_id", null: false
+    t.string "steps"
+    t.bigint "experiment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["experiment_id"], name: "index_procedures_on_experiment_id"
@@ -75,6 +75,4 @@ ActiveRecord::Schema.define(version: 20170531143756) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "experiments", "proposals"
-  add_foreign_key "procedures", "experiments"
 end
