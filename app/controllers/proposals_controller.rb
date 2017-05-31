@@ -2,7 +2,7 @@ class ProposalsController < ApplicationController
    def index
     @proposals = Proposal.all
   end
-  
+
   def show
     @user = User.find(params[:user_id])
     @proposal = Proposal.find(params[:id])
@@ -16,6 +16,7 @@ class ProposalsController < ApplicationController
 
   def edit
     @proposal = Proposal.find(params[:id])
+    # Add route protection
   end
 
   def update
