@@ -1,5 +1,7 @@
 <h1> Welcome <%= @user.full_name %> <h1>
 <p>Lab position: <%= @user.access %></p>
+
+<%  if @user.access == "faculty" %>
 <div>
   <h3> Proposals : <h3>
     <ul>
@@ -10,3 +12,12 @@
       <% end %>
       <ul>
 </div>
+<% else %>
+  <h3> Experiments : <h3>
+    <ul>
+      <% @user.experiments.each do |ex| %>
+      <li><%= link_to ex.title, user_proposal_experiments_path(ex.experimenter, ex.proposal, ex) %></li><br>
+    </ul>
+      <% end %>
+
+<% end %>
