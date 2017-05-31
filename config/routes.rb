@@ -5,9 +5,7 @@ Rails.application.routes.draw do
 resource :users do
   resources :proposals do
     resources :experiments do
-      resources :procedures do
-        reources :comments, :observations, only [:new, :create, :update, :edit, :delete]
-      end
+      resources :procedures 
     end
   end
 end
