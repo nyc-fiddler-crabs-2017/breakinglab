@@ -16,8 +16,7 @@
   <h3> Experiments : <h3>
     <ul>
       <% @user.experiments.each do |ex| %>
-      <li><%= link_to ex.title, user_proposal_experiments_path(ex.experimenter, ex.proposal, ex) %></li><br>
+      <li><%= link_to ex.title, user_proposal_experiment_path(ex.experimenter, ex.proposal, ex) %></li><br>
     </ul>
       <% end %>
-
 <% end %>
