@@ -9,7 +9,9 @@
   <h3>Status:</h3>
   <p><%= @proposal.status %></p>
 </div>
+<% if logged_in? && current_user == @proposal.proposer %>
 <div id="proposal-links">
   <%= link_to 'Edit', edit_user_proposal_path(@user, @proposal) %>
   <%= link_to 'Destroy', user_proposal_path(@user, @proposal), method: :delete, data: { confirm: 'Are you sure?' } %>
 </div>
+<% end %>
