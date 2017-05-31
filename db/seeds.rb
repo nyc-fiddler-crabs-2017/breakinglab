@@ -14,8 +14,6 @@
   password: 'password',
   access: 'faculty'
  )
-
-  faculty.proposals.create(summary: "summary", hypothesis: "hypo")
 }
 
 10.times {
