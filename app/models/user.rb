@@ -5,5 +5,9 @@ class User < ApplicationRecord
   has_many :observations, {:foreign_key => :observer_id}
 
   has_secure_password
-end
 
+  def full_name
+    "#{self.first_name} #{self.last_name}"
+  end
+  
+end
