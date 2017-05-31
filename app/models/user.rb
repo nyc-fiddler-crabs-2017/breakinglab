@@ -5,5 +5,7 @@ class User < ApplicationRecord
   has_many :observations, {:foreign_key => :observer_id}
 
   has_secure_password
-end
 
+  validates :first_name, :last_name, :password_digest, :email, presence: true
+  validates :email, uniqueness: true
+end
