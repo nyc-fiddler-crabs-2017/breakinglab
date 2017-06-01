@@ -1,7 +1,7 @@
 class ProposalsController < ApplicationController
    def index
     @proposals = Proposal.all
-  end
+   end
 
   def show
     @user = User.find(params[:user_id])
@@ -9,9 +9,18 @@ class ProposalsController < ApplicationController
   end
 
   def create
+    @user = User.find(params[:user_id])
+    @proposal = Proposal.new
+
+    if @proposal.save
+      redirect_to @user
+    else
+      @errors = @proposal.errors.full_messages
+    end
   end
 
   def new
+    @proposal = Proposal.new
   end
 
   def edit
