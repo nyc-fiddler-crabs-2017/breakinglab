@@ -14,7 +14,7 @@ class ProceduresController < ApplicationController
     @procedure = @experiment.procedures.new(procedure_params)
 
     if @procedure.save
-      redirect_to @user
+      redirect_to user_proposal_experiment_path(@user, @proposal, @experiment)
     else
       @errors = @procedure.errors.full_messages
       render 'new'
@@ -46,10 +46,14 @@ class ProceduresController < ApplicationController
   end
 
   def destroy
+    # byebug
+    @user = User.find_by(id: params[:user_id])
     @procedure = Procedure.find_by(id: params[:id])
+    @experiment = Experiment.find_by(id: params[:experiment_id])
+
     @procedure.destroy
 
-    redirect_to @procedure.proposer
+    redirect_to user_proposal_experiment_path(@user, @proposal, @experiment)
   end
 
   private
