@@ -23,5 +23,19 @@
   <% end %>
 </div>
 
+<div>
+  <% if @experiment.procedures.any? %>
+  <h4> Procedures: </h4>
+    <% @experiment.procedures.each do |pro| %>
+    <ul>
+      <li><%= pro.steps %></li>
+    </ul>
+    <% end %>
+  <% end %>
+</div>
+
+<% if @experiment.experimenter == current_user %>
 <%= link_to "Edit", edit_user_proposal_experiment_path(@experiment.proposal.proposer,@experiment.proposal, @experiment) %>
+<% end %>
+
 <%= link_to "Back", user_proposal_path(@experiment.proposal) %>
