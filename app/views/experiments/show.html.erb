@@ -23,9 +23,11 @@
   <% end %>
 </div>
 
+
 <div>
-  <% if @experiment.procedures.any? %>
   <h4> Procedures: </h4>
+  <span><%= link_to 'Add procedure' , new_user_proposal_experiment_procedure_path(@experiment.proposal.proposer, @experiment.proposal, @experiment) %></span>
+  <% if @experiment.procedures.any? %>
     <% @experiment.procedures.each do |pro| %>
     <ul>
       <li><%= pro.steps %></li>
@@ -36,10 +38,26 @@
   <% end %>
 </div>
 
+<div>
+    <% if @experiment.observations.any? %>
+    <h4> Observations: </h4>
+    <% @experiment.observations.each do |obs| %>
+    <ul>
+      <li><%= obs.body %> - <%= obs.observer.full_name %></li>
+    </ul>
+      <% end %>
+    <% end %>
+</div>
+
 
 <% if @experiment.experimenter == current_user %>
 <span class="glyphicon glyphicon-pencil" aria-hidden="true"><%= link_to "Edit", edit_user_proposal_experiment_path(@experiment.proposal.proposer,@experiment.proposal, @experiment) %>
 <span class="glyphicon glyphicon-fire" aria-hidden="true"><%= link_to 'Destroy', user_proposal_experiment_path(@experiment.proposal.proposer, @experiment.proposal, @experiment), method: :delete, data: { confirm: 'Are you sure?' } %>
 <%= link_to "Back", user_proposal_path(@experiment.proposal.proposer, @experiment.proposal) %>
-</div>
+
 <% end %>
+
+<% if logged_in? %>
+  <%= link_to "Add an Observation", new_user_proposal_experiment_observation_path(@experiment.proposal.proposer, @experiment.proposal, @experiment) %>
+<% end %>
+
