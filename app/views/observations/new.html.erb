@@ -16,8 +16,8 @@
 
   <%= form_for [@user, @proposal, @experiment, @observation], :html => {:class => "form-group"} do |f| %>
     <div class="form-group">
-      <label for="body">body: </label>
-      <%= f.text_area :body %>
+      <label for="body">Observation: </label>
+      <%= f.text_area :body, class: "form-control", id: "exampleTextarea", rows: "5"   %>
     </div>
     <div class="form-group">
       <%= f.hidden_field :observable_type, :value => "Experiment" %>

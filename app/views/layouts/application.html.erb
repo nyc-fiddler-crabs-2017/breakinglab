@@ -14,22 +14,22 @@
       <nav class="navbar">
         <table class="table">
           <td>
-            <a href="/">Home</a>
+            <h4><a href="/">Home</a></h4>
           </td>
           <% if logged_in? %>
           <td>
-            <a href="/logout">Logout</a>
+            <h4><a href="/logout">Logout</a></h4>
           </td>
           <td>
-            <a href="/users/<%=current_user.id%>"><%= current_user.full_name %></a>
+            <h4><a href="/users/<%=current_user.id%>"><%= current_user.full_name %></a></h4>
           </td>
           <% else %>
           <td>
-            <a href= '/login'> Log In </a>
+            <h4><a href= '/login'> Log In </a></h4>
           </td>
           <td>
-            <a href= '/users/new'> Register </a>
-          </td>  
+            <h4><a href= '/users/new'> Register </a></h4>
+          </td>
           <% end %>
         </table>
       </nav>
