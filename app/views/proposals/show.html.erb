@@ -1,13 +1,13 @@
 <h2>Proposal #<%= @proposal.id %></h2>
 <div id="proposal-container">
   <h3>Proposed By:</h3>
-  <p><%= @user.first_name %> <%= @user.last_name %></p>
+  <h5><%= @user.first_name %> <%= @user.last_name %></h5>
   <h3>Summary:</h3>
-  <p><%= @proposal.summary %></p>
+  <h5><%= @proposal.summary %></h5>
   <h3>Hypothesis:</h3>
-  <p><%= @proposal.hypothesis %></p>
+  <h5><%= @proposal.hypothesis %></h5>
   <h3>Status:</h3>
-  <p><%= @proposal.status %></p>
+  <h5><%= @proposal.status %></h5>
 
 
 <% if logged_in? && current_user == @proposal.proposer %>
