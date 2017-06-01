@@ -7,22 +7,22 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 
-  resources :users do
+  resources :users, except: [:index] do
     resources :proposals do
       resources :comments do
       end
-        resources :experiments do
-          resources :procedures do
-            resources :observations do
-              resources :comments do
+        resources :experiments, except: [:index] do
+          resources :procedures, except: [:index] do
+            resources :observations, only: [:new, :create] do
+              resources :comments, only: [:new, :create]  do
               end
             end
           end
-          resources :observations do
-            resources :comments do
+          resources :observations, only: [:new, :create]  do
+            resources :comments, only: [:new, :create]  do
             end
           end
-          resources :comments do
+          resources :comments, only: [:new, :create] do
           end
         end
     end
