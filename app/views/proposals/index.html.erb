@@ -1,9 +1,9 @@
-<h3> Proposals </h3>
+<h3 class="title is-3"> Proposals </h3>
 
 <% if @proposals %>
   <% @proposals.each do |proposal| %>
   <ul>
-    <li><%= link_to proposal.summary, user_proposal_path(proposal.proposer, proposal) %></li>
+    <h4><li><%= link_to proposal.summary, user_proposal_path(proposal.proposer, proposal) %></li></h4><br>
   </ul>
   <% end %>
 <% else %>
