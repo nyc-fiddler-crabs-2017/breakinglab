@@ -38,4 +38,4 @@
 <%= link_to "Edit", edit_user_proposal_experiment_path(@experiment.proposal.proposer,@experiment.proposal, @experiment) %>
 <% end %>
 
-<%= link_to "Back", user_proposal_path(@experiment.proposal) %>
+<%= link_to "Back", user_proposal_path(@experiment.proposal.proposer, @experiment.proposal) %>
