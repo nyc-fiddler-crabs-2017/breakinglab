@@ -10,12 +10,13 @@ class ProposalsController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    @proposal = Proposal.new
+    @proposal = Proposal.new(proposal_params)
 
     if @proposal.save
       redirect_to @user
     else
       @errors = @proposal.errors.full_messages
+      render 'new'
     end
   end
 
