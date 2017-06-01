@@ -7,11 +7,15 @@
   <h3>Hypothesis:</h3>
   <p><%= @proposal.hypothesis %></p>
   <h3>Status:</h3>
-<% if logged_in? && current_user == @proposal.proposer %>
   <p><%= @proposal.status %></p>
+
+
+<% if logged_in? && current_user == @proposal.proposer %>
 </div>
 <div id="proposal-links">
   <%= link_to 'Edit', edit_user_proposal_path(@user, @proposal) %>
   <%= link_to 'Destroy', user_proposal_path(@user, @proposal), method: :delete, data: { confirm: 'Are you sure?' } %>
 </div>
 <% end %>
+
+# add experiment new form here. (form should only be available if status is open)
