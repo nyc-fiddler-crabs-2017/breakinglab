@@ -1,0 +1,41 @@
+<h1> Experiment: <%= @experiment.title %> </h1>
+<p> Experiment Conducted by : <%= @experiment.experimenter.full_name %> </p>
+
+<div>
+  <h4>Status:</h4><%= @experiment.status %>
+</div>
+
+<div>
+  <h4> Results: </h4>
+  <% if !@experiment.results %>
+    <p> The experiment is still in progress </p>
+  <% else %>
+    <%= @experiment.results %>
+  <% end %>
+</div>
+
+<div>
+  <h4> Conclusions: </h4>
+  <% if !@experiment.conclusions %>
+    <p> The experiment is still in progress </p>
+  <% else %>
+    <%= @experiment.conclusions %>
+  <% end %>
+</div>
+
+<div>
+  <% if @experiment.procedures.any? %>
+  <h4> Procedures: </h4>
+    <% @experiment.procedures.each do |pro| %>
+    <ul>
+      <li><%= pro.steps %></li>
+    </ul>
+    <% end %>
+  <% end %>
+</div>
+
+<% if @experiment.experimenter == current_user %>
+<%= link_to "Edit", edit_user_proposal_experiment_path(@experiment.proposal.proposer,@experiment.proposal, @experiment) %>
+<% end %>
+
+<%= link_to "Back", user_proposal_path(@experiment.proposal.proposer, @experiment.proposal) %>

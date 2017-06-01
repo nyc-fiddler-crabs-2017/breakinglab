@@ -4,4 +4,6 @@ class Experiment < ApplicationRecord
   has_many :procedures
   has_many :comments , as: :commentable
   has_many :observations, as: :observable
+
+  validates :title, presence: true
 end

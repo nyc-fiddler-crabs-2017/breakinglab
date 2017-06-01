@@ -1,0 +1,11 @@
+<%= form_for [@user, @proposal, @experiment] do |f| %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %><br>
+  </p>
+  <%= f.hidden_field :proposal_id, :value => @proposal.id %>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+

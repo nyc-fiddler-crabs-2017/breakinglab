@@ -7,11 +7,14 @@ Breaking Lab is a laboratory experiment tracker to facilitate communication betw
   - Faculty staff will be able to post proposals on the homepage.
   - As a lab technician, you will be able to create experiments based on specific proposals.
   - Experiments will be able to contain results, observations, conclusions and comments.
+  
+  - Observations can be made on: experiments, procedures.
+  - Comments can be made on: observations, experiments, proposals.
 
 ## Authors:
 
   - Carlos Grijalva
-  - Jason Wong
+  - Jason Wang
   - Lana Chiad
   - Kiv Lo
 
