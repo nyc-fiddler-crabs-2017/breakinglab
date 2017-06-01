@@ -23,23 +23,40 @@
   <% end %>
 </div>
 
+
 <div>
-  <% if @experiment.procedures.any? %>
   <h4> Procedures: </h4>
+  <span><%= link_to 'Add procedure' , new_user_proposal_experiment_procedure_path(@experiment.proposal.proposer, @experiment.proposal, @experiment) %></span>
+  <% if @experiment.procedures.any? %>
     <% @experiment.procedures.each do |pro| %>
     <ul>
       <li><%= pro.steps %></li>
       <%= link_to "Edit", edit_user_proposal_experiment_procedure_path(@experiment.proposal.proposer,@experiment.proposal, @experiment) %>
-      <%= link_to "Delete", user_proposal_experiment_procedure_path(@experiment.proposal.proposer,@experiment.proposal, @experiment), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to "Delete", user_proposal_experiment_procedure_path(@experiment.proposal.proposer, @experiment.proposal, @experiment, pro), method: :delete, data: { confirm: 'Are you sure?' } %>
     </ul>
     <% end %>
   <% end %>
 </div>
 
+<div>
+    <% if @experiment.observations.any? %>
+    <h4> Observations: </h4>
+    <% @experiment.observations.each do |obs| %>
+    <ul>
+      <li><%= obs.body %> - <%= obs.observer.full_name %></li>
+    </ul>
+      <% end %>
+    <% end %>
+</div>
+
 
 <% if @experiment.experimenter == current_user %>
-<%= link_to "Edit", edit_user_proposal_experiment_path(@experiment.proposal.proposer,@experiment.proposal, @experiment) %>
-<%= link_to 'Destroy', user_proposal_experiment_path(@experiment.proposal.proposer, @experiment.proposal, @experiment), method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to "Back", user_proposal_path(@experiment.proposal.proposer, @experiment.proposal) %>
-</div>
+  <%= link_to "Edit", edit_user_proposal_experiment_path(@experiment.proposal.proposer,@experiment.proposal, @experiment) %>
+  <%= link_to 'Destroy', user_proposal_experiment_path(@experiment.proposal.proposer, @experiment.proposal, @experiment), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= link_to "Back", user_proposal_path(@experiment.proposal.proposer, @experiment.proposal) %>
 <% end %>
+
+<% if logged_in? %>
+  <%= link_to "Add an Observation", new_user_proposal_experiment_observation_path(@experiment.proposal.proposer, @experiment.proposal, @experiment) %>
+<% end %>
+</div>
