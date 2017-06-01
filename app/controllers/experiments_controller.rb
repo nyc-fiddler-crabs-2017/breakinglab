@@ -53,7 +53,7 @@ class ExperimentsController < ApplicationController
     @experiment = Experiment.find_by(id: params[:id])
     if current_user == @experiment.experimenter
       @experiment.destroy
-      redirect_to @proposal
+      redirect_to user_proposal_path(@experiment.proposal.proposer, @experiment.proposal)
     else
       redirect_to @experiment
     end
