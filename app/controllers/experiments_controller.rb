@@ -49,10 +49,11 @@ class ExperimentsController < ApplicationController
   end
 
   def destroy
+    @proposal = Proposal.find(params[:proposal_id])
     @experiment = Experiment.find_by(id: params[:id])
     if current_user == @experiment.experimenter
       @experiment.destroy
-      redirect_to @experiment.proposal
+      redirect_to user_proposal_path(@experiment.proposal.proposer, @experiment.proposal)
     else
       redirect_to @experiment
     end
