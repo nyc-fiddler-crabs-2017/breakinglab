@@ -26,11 +26,15 @@ class ProposalsController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:user_id])
-    @proposal = Proposal.find(params[:id])
-    if @user != current_user
-      @errors = ["Wrong credentials"]
-      render '/sessions/new'
+    if logged_in?
+      @user = User.find(params[:user_id])
+      @proposal = Proposal.find(params[:id])
+      if @user != current_user
+        @errors = ["Wrong credentials"]
+        render '/sessions/new'
+      end
+    else
+      redirect_to '/login'
     end
   end
 
