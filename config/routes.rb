@@ -12,6 +12,12 @@ Rails.application.routes.draw do
       resources :comments do
       end
         resources :experiments do
+          resources :procedures do
+            resources :observations do
+              resources :comments do
+              end
+            end
+          end
           resources :observations do
             resources :comments do
             end
@@ -19,12 +25,6 @@ Rails.application.routes.draw do
           resources :comments do
           end
         end
-        resources :procedures do
-          resources :observations do
-              resources :comments do
-                end
-              end
-            end
     end
   end
 

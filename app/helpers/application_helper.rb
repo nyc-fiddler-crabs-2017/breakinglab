@@ -18,4 +18,10 @@ module ApplicationHelper
    @current_user = nil
  end
 
+ def not_logged_in
+   if !logged_in?
+     redirect '/login'
+   end
+ end
+
 end

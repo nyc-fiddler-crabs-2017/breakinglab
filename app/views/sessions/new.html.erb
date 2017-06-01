@@ -1,6 +1,17 @@
 <h1>Sessions#new</h1>
 <p>Find me in app/views/sessions/new.html.erb</p>
 
+<% if @errors %>
+    <div id="error_explanation">
+      <ul>
+      <% @errors.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+<% end %>
+
+
 <% provide(:title, "Log in") %>
 <h1>Log in</h1>
 

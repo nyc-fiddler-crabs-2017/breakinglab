@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20170531162149) do
   create_table "proposals", force: :cascade do |t|
     t.string "summary", null: false
     t.string "hypothesis", null: false
-    t.string "status"
+    t.string "status", default: "open"
     t.bigint "proposer_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
