@@ -15,7 +15,7 @@
   access: 'faculty'
  )
 
-  faculty.proposals.create(summary: "summary", hypothesis: "hypo", status: "open")
+  faculty.proposals.create(summary: Faker::Hacker.say_something_smart, hypothesis: Faker::HarryPotter.quote, status: "open")
 }
 
 10.times {
