@@ -9,8 +9,8 @@ class ProposalsController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
-    @proposal = Proposal.new(proposal_params)
+    @user = current_user
+    @proposal = @user.proposals.new(proposal_params)
 
     if @proposal.save
       redirect_to @user
@@ -21,12 +21,17 @@ class ProposalsController < ApplicationController
   end
 
   def new
+    @user = current_user
     @proposal = Proposal.new
   end
 
   def edit
+    @user = User.find(params[:user_id])
     @proposal = Proposal.find(params[:id])
-    # Add route protection
+    if @user != current_user
+      @errors = ["Wrong credentials"]
+      render '/sessions/new'
+    end
   end
 
   def update

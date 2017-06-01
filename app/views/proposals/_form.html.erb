@@ -14,7 +14,7 @@
   </div>
   <% end %>
 
-  <%= form_for [@proposal.proposer, @proposal] do |f| %>
+  <%= form_for [@user, @proposal] do |f| %>
     <div class="form-sections">
       <%= f.label :summary %>
       <%= f.text_field :summary %>
@@ -28,7 +28,8 @@
       <%= f.select :status, ['Open', 'In Progress', 'Closed', 'Archived'] %>
     </div>
     <div class="form-sections">
-      <%= f.submit "Update Proposal" %>
+      <%= f.submit %>
     </div>
   <% end %>
+
 </div>
