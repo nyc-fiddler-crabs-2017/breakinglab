@@ -18,4 +18,20 @@
 </div>
 <% end %>
 
-# add experiment new form here. (form should only be available if status is open)
+<% if logged_in? && current_user.access == "labtech" %>
+<div>
+  <%= link_to 'Create new experiment', new_user_proposal_experiment_path(@proposal.proposer, @proposal) %>
+</div>
+<% end %>
+
+<div>
+  <% if @proposal.experiments.any? %>
+  <h5> Current Experiments: </h5>
+  <ul>
+    <% @proposal.experiments.each do |exp| %>
+      <li><%= link_to exp.title , user_proposal_experiment_path(@proposal.proposer,@proposal, exp) %></li>
+    <% end %>
+  </ul>
+  <% end %>
+</div>
+

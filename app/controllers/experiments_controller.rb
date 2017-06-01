@@ -19,11 +19,11 @@ class ExperimentsController < ApplicationController
   end
 
   def show
-    @experiment = Experiment.find(params[:id])
+    @experiment = Experiment.find_by(id: params[:id])
   end
 
   def edit
-    @experiment = Experiment.find(params[:id])
+    @experiment = Experiment.find_by(id: params[:id])
     @proposal = @experiment.proposal
     @user = User.find(params[:user_id])
     if current_user != @experiment.experimenter
@@ -32,7 +32,7 @@ class ExperimentsController < ApplicationController
   end
 
   def update
-    @experiment = Experiment.find(params[:id])
+    @experiment = Experiment.find_by(id: params[:id])
     if current_user == @experiment.experimenter
       if @experiment.update(experiment_params)
         redirect_to @experiment
@@ -45,7 +45,7 @@ class ExperimentsController < ApplicationController
   end
 
   def destroy
-    @experiment = Experiment.find(params[:id])
+    @experiment = Experiment.find_by(id: params[:id])
     if current_user == @experiment.experimenter
       @experiment.destroy
       redirect_to @experiment.proposal
