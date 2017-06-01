@@ -1,0 +1,22 @@
+<%= form_for [@user, @proposal, @experiment] do |f| %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %><br>
+  </p>
+  <p>
+    <%= f.label :results %><br>
+    <%= f.text_field :results %><br>
+  </p>
+  <p>
+    <%= f.label :conclusions %><br>
+    <%= f.text_field :conclusions %><br>
+  </p>
+  <p>
+    <%= f.label :status %><br>
+    <%= f.text_field :status %><br>
+  </p>
+  <%= f.hidden_field :proposal_id, :value => @proposal.id %>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
