@@ -1,0 +1,34 @@
+<div class="form-wrapper">
+
+  <% if @proposal.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@proposal.errors.count, "error") %>
+      prohibited this article from being saved:
+    </h2>
+    <ul>
+      <% @proposal.errors.full_messages.each do |msg| %>
+      <li><%= msg %> </li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <%= form_for [@proposal.proposer, @proposal] do |f| %>
+    <div class="form-sections">
+      <%= f.label :summary %>
+      <%= f.text_field :summary %>
+    </div>
+    <div class="form-sections">
+      <%= f.label :hypothesis %>
+      <%= f.text_field :hypothesis %>
+    </div>
+    <div class="form-sections">
+      <%= f.label :status %>
+      <%= f.select :status, ['Open', 'In Progress', 'Closed', 'Archived'] %>
+    </div>
+    <div class="form-sections">
+      <%= f.submit "Update Proposal" %>
+    </div>
+  <% end %>
+</div>

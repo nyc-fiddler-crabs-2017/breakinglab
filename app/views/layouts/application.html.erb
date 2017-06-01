@@ -9,7 +9,7 @@
   </head>
 
   <body>
-    <h1> Welcome to Breaking Lab <h1>
+    <h1> Welcome to Breaking Lab </h1>
       <nav>
         <a href="/">Home</a>
         <% if logged_in? %>
@@ -20,6 +20,10 @@
         <a href= '/users/new'> Register </a>
         <% end %>
       </nav>
+      <div id="logo">
+        <img src="http://freevector.co/wp-content/uploads/2009/08/32094-beaker.png" style="width:150px;height:128px;">
+        <!-- <img src="assets/images/logo2.jpg" style="width:150px;height:128px;"> -->
+      </div>
     <%= yield %>
   </body>
 </html>
