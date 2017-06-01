@@ -24,8 +24,12 @@
             <a href="/users/<%=current_user.id%>"><%= current_user.full_name %></a>
           </td>
           <% else %>
-          <a href= '/login'> Log In </a>
-          <a href= '/users/new'> Register </a>
+          <td>
+            <a href= '/login'> Log In </a>
+          </td>
+          <td>
+            <a href= '/users/new'> Register </a>
+          </td>  
           <% end %>
         </table>
       </nav>
