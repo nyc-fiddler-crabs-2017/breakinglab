@@ -46,8 +46,8 @@ class ProceduresController < ApplicationController
   end
 
   def destroy
-    # byebug
     @user = User.find_by(id: params[:user_id])
+    @proposal = Proposal.find_by(id: params[:proposal_id])
     @procedure = Procedure.find_by(id: params[:id])
     @experiment = Experiment.find_by(id: params[:experiment_id])
 
@@ -58,6 +58,6 @@ class ProceduresController < ApplicationController
 
   private
   def procedure_params
-    params.require(:procedure).permit(:steps, :experiment_id)
+    params.require(:procedure).permit(:steps, :experiment_id , :proposal_id)
   end
 end

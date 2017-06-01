@@ -1,4 +1,4 @@
-#logo {
+  #logo {
   position: absolute;
   right:0;
   top:0;
@@ -7,7 +7,13 @@
 }
 
 body{
+  background-image: url('background.jpg');
+  background-size: 200%;
   font: 300 18px/24px "lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+a {
+  background-color: white;
 }
 
 /*.container {

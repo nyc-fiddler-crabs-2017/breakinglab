@@ -2,8 +2,9 @@
 
 <% if @proposals %>
   <% @proposals.each do |proposal| %>
+
   <ul>
-    <h4><li><%= link_to proposal.summary, user_proposal_path(proposal.proposer, proposal) %></li></h4><br>
+    <h4><li><span class="glyphicon glyphicon-search" aria-hidden="true"></span><%= link_to proposal.summary, user_proposal_path(proposal.proposer, proposal) %></li><br>Status- <%= proposal.status %></h4><br>
   </ul>
   <% end %>
 <% else %>

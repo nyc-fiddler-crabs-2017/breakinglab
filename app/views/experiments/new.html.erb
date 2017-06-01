@@ -1,11 +1,13 @@
-<%= form_for [@user, @proposal, @experiment] do |f| %>
+
+<div class="form-group">
+  <%= form_for [@user, @proposal, @experiment] do |f| %>
   <p>
     <%= f.label :title %><br>
-    <%= f.text_field :title %><br>
+    <%= f.text_field :title, class: "form-control" %><br>
   </p>
   <%= f.hidden_field :proposal_id, :value => @proposal.id %>
   <p>
     <%= f.submit %>
   </p>
-<% end %>
-
+  <% end %>
+</div>

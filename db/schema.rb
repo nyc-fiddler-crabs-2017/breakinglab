@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20170531162149) do
 
   create_table "experiments", force: :cascade do |t|
     t.string "title", null: false
-    t.string "status", default: "open", null: false
+    t.string "status", default: "open"
     t.string "results"
     t.string "conclusions"
     t.bigint "experimenter_id"

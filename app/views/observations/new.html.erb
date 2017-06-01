@@ -1,0 +1,30 @@
+<div class="form-group">
+
+  <% if @observation.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@observation.errors.count, "error") %>
+      prohibited this article from being saved:
+    </h2>
+    <ul>
+      <% @observation.errors.full_messages.each do |msg| %>
+      <li><%= msg %> </li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <%= form_for [@user, @proposal, @experiment, @observation], :html => {:class => "form-group"} do |f| %>
+    <div class="form-group">
+      <label for="body">Observation: </label>
+      <%= f.text_area :body, class: "form-control", id: "exampleTextarea", rows: "5"   %>
+    </div>
+    <div class="form-group">
+      <%= f.hidden_field :observable_type, :value => "Experiment" %>
+      <%= f.hidden_field :observable_id, :value => @experiment.id %>
+
+      <%= f.submit "Submit", class: "btn btn-default" %>
+    </div>
+  <% end %>
+
+</div>
