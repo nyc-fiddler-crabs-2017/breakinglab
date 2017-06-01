@@ -17,11 +17,11 @@
   <%= form_for [@user, @proposal], :html => {:class => "form-group"} do |f| %>
     <div class="form-group">
       <label for="summary">Summary: </label>
-      <%= f.text_field :summary %>
+      <%= f.text_field :summary, class: "form-control" %>
     </div>
     <div class="form-group">
       <label for="hypothesis">Hypothesis </label>
-      <%= f.text_field :hypothesis %>
+      <%= f.text_field :hypothesis, class: "form-control" %>
     </div>
     <div class="form-group">
       <%= f.label :status %>

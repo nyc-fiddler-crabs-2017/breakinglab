@@ -12,14 +12,26 @@
   <body>
     <h1 class="title is-1"> Welcome to Breaking Lab </h1>
       <nav class="navbar">
-        <a href="/">Home</a>
-        <% if logged_in? %>
-        <a href="/logout">Logout</a>
-        <a href="/users/<%=current_user.id%>"><%= current_user.full_name %></a>
-        <% else %>
-        <a href= '/login'> Log In </a>
-        <a href= '/users/new'> Register </a>
-        <% end %>
+        <table class="table">
+          <td>
+            <a href="/">Home</a>
+          </td>
+          <% if logged_in? %>
+          <td>
+            <a href="/logout">Logout</a>
+          </td>
+          <td>
+            <a href="/users/<%=current_user.id%>"><%= current_user.full_name %></a>
+          </td>
+          <% else %>
+          <td>
+            <a href= '/login'> Log In </a>
+          </td>
+          <td>
+            <a href= '/users/new'> Register </a>
+          </td>  
+          <% end %>
+        </table>
       </nav>
       <div id="logo">
         <img src="http://freevector.co/wp-content/uploads/2009/08/32094-beaker.png" style="width:150px;height:128px;">
