@@ -12,3 +12,7 @@ class CreateExperiments < ActiveRecord::Migration[5.1]
     end
   end
 end
+
+# <!-- </p>
+# <%= f.hidden_field :proposal_id, :value => @proposal.id %>
+# <p> -->

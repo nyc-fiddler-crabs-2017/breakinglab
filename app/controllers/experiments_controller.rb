@@ -7,12 +7,13 @@ class ExperimentsController < ApplicationController
   end
 
   def create
-    # @proposal = Proposal.find_by(:id params[:proposal_id])
-    @experiment = current_user.experiments.new(experiment_params)
+    @user = current_user
+    @proposal = Proposal.find(params[:proposal_id])
+    @experiment = @user.experiments.new(experiment_params)
 
     # @proposal.experiments()
     if @experiment.save
-      redirect_to @proposal
+      redirect_to user_proposal_path(@proposal.proposer, @proposal)
     else
       render '/experiments/new'
     end
@@ -32,11 +33,14 @@ class ExperimentsController < ApplicationController
   end
 
   def update
+    @user = current_user
+    @proposal = Proposal.find(params[:proposal_id])
     @experiment = Experiment.find_by(id: params[:id])
     if current_user == @experiment.experimenter
-      if @experiment.update(experiment_params)
-        redirect_to @experiment
+      if @experiment.update(experiment_update_params)
+        redirect_to user_proposal_path(@experiment.proposal.proposer, @experiment.proposal)
       else
+        @errors = @experiment.errors.full_messages
         render '/experiments/edit'
       end
     else
@@ -55,6 +59,9 @@ class ExperimentsController < ApplicationController
   end
 
   private
+  def experiment_update_params
+    params.require(:experiment).permit(:title, :proposal_id, :results, :conclusions)
+  end
   def experiment_params
     params.require(:experiment).permit(:title, :proposal_id)
   end
