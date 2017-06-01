@@ -1,0 +1,29 @@
+<h1>Edit procedures</h1>
+
+<div class="form-wrapper">
+
+  <% if @procedure.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@procedure.errors.count, "error") %>
+      prohibited this article from being saved:
+    </h2>
+    <ul>
+      <% @procedure.errors.full_messages.each do |msg| %>
+      <li><%= msg %> </li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <%= form_for [@user, @proposal, @experiment, @procedure] do |f| %>
+    <div class="form-sections">
+      <%= f.label :steps %>
+      <%= f.text_field :steps %>
+    </div>
+    <div class="form-sections">
+      <%= f.submit %>
+    </div>
+  <% end %>
+
+</div>
