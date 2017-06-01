@@ -5,7 +5,10 @@ class ProposalsController < ApplicationController
 
   def show
     @user = User.find(params[:user_id])
-    @proposal = Proposal.find(params[:id])
+    @proposal = Proposal.find_by(id: params[:id])
+
+    render '404' if @proposal == nil
+
   end
 
   def create
