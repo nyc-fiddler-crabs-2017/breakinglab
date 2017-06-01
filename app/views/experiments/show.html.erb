@@ -32,7 +32,7 @@
     <ul>
       <li><%= pro.steps %></li>
       <%= link_to "Edit", edit_user_proposal_experiment_procedure_path(@experiment.proposal.proposer,@experiment.proposal, @experiment) %>
-      <%= link_to "Delete", user_proposal_experiment_procedure_path(@experiment.proposal.proposer,@experiment.proposal, @experiment,pro), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to "Delete", user_proposal_experiment_procedure_path(@experiment.proposal.proposer, @experiment.proposal, @experiment, pro), method: :delete, data: { confirm: 'Are you sure?' } %>
     </ul>
     <% end %>
   <% end %>
