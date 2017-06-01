@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'procedures/create'
+
+  get 'procedures/edit'
+
+  get 'procedures/destroy'
+
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   get '/logout',  to: 'sessions#destroy'
